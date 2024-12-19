@@ -29,7 +29,10 @@ health = HealthCheck()
 
 class RequestHandler(BaseHTTPRequestHandler):
     def log_message(self, *args):
-        logger.info(*args)
+        logger.info("%s - - [%s] %s" %
+                     (self.address_string(),
+                      self.log_date_time_string(),
+                      format % args))
 
     def sent_request(self):
         message, status_code, headers = health.run()
