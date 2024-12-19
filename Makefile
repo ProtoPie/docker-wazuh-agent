@@ -5,34 +5,34 @@ help: ## Help for usage
 all: docker
 
 build-minideb: ## Build Wazuh Agent minideb based
-	docker build -t kennyopennix/wazuh-agent:latest .  && \
-	docker tag kennyopennix/wazuh-agent:latest kennyopennix/wazuh-agent:$(VERSION)
+	docker build -t protopie/wazuh-agent:latest .  && \
+	docker tag protopie/wazuh-agent:latest protopie/wazuh-agent:$(VERSION)
 
 build-amazon-linux: ## Build Wazuh Agent amazon linux based
-	docker build -f ./images/Dockerfile.amazonlinux -t kennyopennix/wazuh-agent-amazonlinux:latest .  && \
-	docker tag kennyopennix/wazuh-agent-amazonlinux:latest kennyopennix/wazuh-agent-amazonlinux:$(VERSION)
+	docker build -f ./images/Dockerfile.amazonlinux -t protopie/wazuh-agent-amazonlinux:latest .  && \
+	docker tag protopie/wazuh-agent-amazonlinux:latest protopie/wazuh-agent-amazonlinux:$(VERSION)
 
 build-ubuntu: ## Build Wazuh Agent ubuntu linux based
-	docker build -f ./images/Dockerfile.ubuntu -t kennyopennix/wazuh-agent-ubuntu:latest .  && \
-	docker tag kennyopennix/wazuh-agent-ubuntu:latest kennyopennix/wazuh-agent-ubuntu:$(VERSION)
+	docker build -f ./images/Dockerfile.ubuntu -t protopie/wazuh-agent-ubuntu:latest .  && \
+	docker tag protopie/wazuh-agent-ubuntu:latest protopie/wazuh-agent-ubuntu:$(VERSION)
 
 docker-run: ## Run Wazuh Agent docker image  minideb based
-	docker run kennyopennix/wazuh-agent:$(VERSION)
+	docker run protopie/wazuh-agent:$(VERSION)
 
 docker-push-minideb: ## Push Wazuh Agent docker image  minideb based
-	docker push kennyopennix/wazuh-agent:latest && \
-	docker push kennyopennix/wazuh-agent:$(VERSION)
+	docker push protopie/wazuh-agent:latest && \
+	docker push protopie/wazuh-agent:$(VERSION)
 
 docker-push-amazon-linux: ## Push Wazuh Agent docker image amazon linux based
-	docker push kennyopennix/wazuh-agent-amazonlinux:latest && \
-	docker push kennyopennix/wazuh-agent-amazonlinux:$(VERSION)
+	docker push protopie/wazuh-agent-amazonlinux:latest && \
+	docker push protopie/wazuh-agent-amazonlinux:$(VERSION)
 
 docker-push-ubuntu: ## Push Wazuh Agent docker image ubuntu linux based
-	docker push kennyopennix/wazuh-agent-ubuntu:latest && \
-	docker push kennyopennix/wazuh-agent-ubuntu:$(VERSION)
+	docker push protopie/wazuh-agent-ubuntu:latest && \
+	docker push protopie/wazuh-agent-ubuntu:$(VERSION)
 
 docker-buildx:
-	docker buildx build --push -t kennyopennix/wazuh-agent:$(VERSION) --cache-to type=local,dest=./tmp/ --cache-from type=local,src=./tmp/ .
+	docker buildx build --push -t protopie/wazuh-agent:$(VERSION) --cache-to type=local,dest=./tmp/ --cache-from type=local,src=./tmp/ .
 
 run-local: ## Run docker compose stack with all agents on board
 	docker compose -f tests/single-node/generate-indexer-certs.yml run --rm generator

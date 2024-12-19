@@ -17,7 +17,7 @@ spec:
       hostIPC: true
       containers:
       - name: wazuh-agent
-        image: kennyopennix/wazuh-agent:latest
+        image: protopie/wazuh-agent:latest
         livenessProbe:
           httpGet:
             path: /healz

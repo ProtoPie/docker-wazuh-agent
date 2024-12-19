@@ -25,7 +25,7 @@ jobs:
    strategy:
       max-parallel: 6
       matrix:
-        wazuh_agent_version: ['4.3.10-1','4.4.5-1', '4.5.4-1', '4.6.0-1', '4.7.1-1', '4.7.2-1']
+        wazuh_agent_version: ['4.3.10-1','4.4.5-1', '4.5.4-1', '4.6.0-1', '4.7.1-1', '4.7.2-1', '4.9.2-1']
         include:
           - dockerfile: ./Dockerfile
             image: wazuh-agent-minideb
@@ -67,7 +67,7 @@ jobs:
     strategy:
       max-parallel: 6
       matrix:
-        wazuh_agent_version: ['4.3.10-1','4.4.5-1', '4.5.4-1', '4.6.0-1', '4.7.1-1', '4.7.2-1']
+        wazuh_agent_version: ['4.3.10-1','4.4.5-1', '4.5.4-1', '4.6.0-1', '4.7.1-1', '4.7.2-1', '4.9.2-1']
         include:
           - image: wazuh-agent-minideb
           - image: wazuh-agent-amazonlinux
@@ -115,7 +115,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        wazuh_agent_version: ['4.3.10-1','4.4.5-1', '4.5.4-1','4.6.0-1','4.7.1-1','4.7.2-1']
+        wazuh_agent_version: ['4.3.10-1','4.4.5-1', '4.5.4-1','4.6.0-1','4.7.1-1','4.7.2-1', '4.9.2-1']
         wazuh_cluster_version: ['4.7.0']
         include:
           - image: wazuh-agent-minideb
