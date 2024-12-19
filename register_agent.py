@@ -29,7 +29,7 @@ health = HealthCheck()
 
 class RequestHandler(BaseHTTPRequestHandler):
     def log_message(self, *args):
-        logger.info("%s - - [%s] %s\n" % (self.address_string(), self.log_date_time_string(), args))
+        logger.info(args[0] % args[1:])
 
     def sent_request(self):
         message, status_code, headers = health.run()
@@ -47,6 +47,8 @@ class RequestHandler(BaseHTTPRequestHandler):
         except TypeError:
             self.send_response(500)
 
+    def do_GET(self):
+        self.sent_request()
 
 def json_serialize(record):
     subset = {"timestamp": record["time"].timestamp(), "message": record["message"]}
