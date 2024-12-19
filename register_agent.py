@@ -29,7 +29,7 @@ health = HealthCheck()
 
 class RequestHandler(BaseHTTPRequestHandler):
     def log_message(self, *args):
-        raise NotImplementedError("notImplemented() cannot be performed because ...")
+        logger.info(*args)
 
     def sent_request(self):
         message, status_code, headers = health.run()
